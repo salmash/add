@@ -48,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void populateCourseSpinner() {
         ArrayList<String> data = new ArrayList<>();
-        data.add("Comp233");
-        data.add("Comp433");
-        data.add("Comp438");
+        data.add("Java - Comp233");
+        data.add("Software - Comp433");
+        data.add("Mobile Development - Comp438");
         ArrayAdapter<String > adpter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,data);
         courseSpn.setAdapter(adpter);
     }
@@ -104,7 +104,11 @@ public class MainActivity extends AppCompatActivity {
         student.setPhone(phoneTxt.getText().toString());
         student.setGender(genderSpn.getSelectedItem().toString());
         student.setUniversity(UniversityTxt.getText().toString());
-        student.setCourseID(courseSpn.getSelectedItem().toString());
+
+        String s = courseSpn.getSelectedItem().toString();
+        String [] str = s.split("-");
+
+        student.setCourseID(str[1].trim());
 
         return student;
     }
